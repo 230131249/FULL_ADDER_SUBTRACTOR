@@ -37,53 +37,77 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
-FULL-ADDER :
-![image](https://github.com/user-attachments/assets/f4cab391-9e9d-4b23-9add-cf86ed1ffac0)
- 
-FULL-SUBTRACTOR:
 
-![image](https://github.com/user-attachments/assets/1d54b25f-a6c1-4411-93f1-f94b2ada02ef)
+Full adder:
+
+<img width="399" height="343" alt="image" src="https://github.com/user-attachments/assets/058fb54a-5a09-401b-b4a3-eb220472182f" />
+
+Full subtractor:
+
+<img width="433" height="337" alt="image" src="https://github.com/user-attachments/assets/7f798859-2dba-4c15-b1ba-b910ac90816f" />
 
 **Procedure**
+1.	Type the program in Quartus software.
 
-STEP-1 Open Quartus Prime software.
+2.	Compile and run the program.
 
-STEP-2 Create a new project and select the target FPGA device.
+3.	Generate the RTL schematic and save the logic diagram.
 
-STEP-3 Design and implement the full adder/subtractor using Verilog or VHDL within a new HDL file.
+4.	Create nodes for inputs and outputs to generate the timing diagram.
 
-STEP-4 Add the HDL file to the project and compile the design.
-
-STEP-5 Program the FPGA with the compiled design to test the functionality of the full adder/subtractor.
-
+5.	For different input combinations generate the timing diagram.
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: J Jayasuriya RegisterNumber: 212223230088
-*/
+Full adder:
 
-```
-module fulladdsub(a,b,c,sum,carry,BO,DIFF);
+module ex6(a,b,c,sum,carry);
+
 input a,b,c;
-output sum,carry,BO,DIFF;
-assign sum=a^b^c;
-assign carry= a&b | a&c | b&c;
-wire a0;
-not (a0,a);
-assign BO= b&c | a0&c | a0&b;
-assign DIFF=a^b^c;
+
+output sum,carry;
+
+assign sum=(a^b^c);
+
+assign carry=(a&b)|(b&c)|(c&a);
+
 endmodule
-```
+
+Full subtractor:
+
+module ex7(a,b,bin,d,bout);
+
+input a,b,bin;
+
+output d,bout;
+
+assign d=(a^b^bin);
+
+assign bout=(~a&bin)|(b&bin)|(~a&b);
+
+endmodule
+
 
 **RTL Schematic**
 
+Full adder:
 
-![image](https://github.com/user-attachments/assets/f85c2d75-13a2-4b76-a026-b0beec0e9d7e)
+<img width="1920" height="1080" alt="Screenshot 2025-11-18 214751" src="https://github.com/user-attachments/assets/244d9351-b4eb-4af3-a783-3ffae98b8417" />
+
+Full subtractor:
+
+<img width="1920" height="1080" alt="Screenshot 2025-11-18 223909" src="https://github.com/user-attachments/assets/72780a24-0d84-4473-98ae-cf87f87002b2" />
 
 **Output Timing Waveform**
 
+Full adder:
 
-![image](https://github.com/user-attachments/assets/36041cce-2ab9-4d77-a342-cbdb8dead24e)
+<img width="1920" height="1080" alt="Screenshot 2025-11-18 215234" src="https://github.com/user-attachments/assets/35186705-39ee-4981-9b5f-e51f5c57a743" />
+
+Full subtractor:
+
+<img width="1920" height="1080" alt="Screenshot 2025-11-18 224103" src="https://github.com/user-attachments/assets/4951187e-617c-413c-bda7-49a8a8dba078" />
+
 
 **Result:**
 
